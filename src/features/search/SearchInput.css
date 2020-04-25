@@ -1,0 +1,26 @@
+.SearchInput {
+  position: relative;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  display: inline-block;
+}
+
+.SearchInput input {
+  background: rgba(0, 0, 0, 0);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 0.3em;
+  font-size: 0.75em;
+  padding: 0.25em;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.SearchInput button {
+  position: absolute;
+  right: 0.25em;
+  background: rgba(0, 0, 0, 0);
+  border: 0em;
+  border-radius: 0.3em;
+  font-size: 0.75em;
+  padding: 0.25em;
+  color: rgba(0, 0, 0, 0.8);
+}

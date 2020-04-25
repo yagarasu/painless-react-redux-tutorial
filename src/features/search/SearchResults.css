@@ -1,0 +1,21 @@
+.SearchResults {
+  display: flex;
+  flex-direction: column;
+  max-width: 960px;
+}
+
+.SearchResults a, .SearchResults a:visited {
+  color: #FA0F4F;
+}
+
+.SearchResults-item h2 {
+  font-size: 0.75em;
+}
+
+.SearchResults-item h3 {
+  font-size: 0.6em;
+}
+
+.SearchResults-item p {
+  font-size: 0.5em;
+}
