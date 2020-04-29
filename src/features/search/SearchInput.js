@@ -2,7 +2,9 @@ import React from 'react';
 import './SearchInput.css';
 
 function SearchInput ({ busy, onSubmit, value, onChange }) {
-  const icon = busy ? <span role="img" aria-label="Loading">💤</span> : <span role="img" aria-label="Search">🔍</span>
+  const icon = busy
+    ? <span role="img" aria-label="Loading">💤</span>
+    : <span role="img" aria-label="Search">🔍</span>
   const hndKeyUp = e => {
     if (e.keyCode === 13) {
       onSubmit(value)
@@ -16,7 +18,7 @@ function SearchInput ({ busy, onSubmit, value, onChange }) {
   }
   return (
     <div className="SearchInput">
-      <input disabled={busy} onChange={hndChange} onKeyUp={hndKeyUp} />
+      <input value={value} onChange={hndChange} onKeyUp={hndKeyUp} disabled={busy} />
       <button type="submit" disabled={busy} onClick={hndClick}>{icon}</button>
     </div>
   );

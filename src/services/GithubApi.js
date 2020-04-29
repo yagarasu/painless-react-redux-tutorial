@@ -1,10 +1,16 @@
 import GitHub from 'github-api';
 
 const GithubApi = {
+  getClient: () => {
+    return new GitHub({
+      username: process.env.REACT_APP_GITHUB_USER,
+      password: process.env.REACT_APP_GITHUB_PASS
+    })
+  },
   search: async (query) => {
     try {
-      const github = new GitHub();
-      const search = github.search({ q: query, page: 1, per_page: 10 });
+      const github = this.getClient();
+      const search = github.search({ q: query });
       const { data: results } = await search.forRepositories();
       return results;
     } catch (e) {

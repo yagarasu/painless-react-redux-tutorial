@@ -34,15 +34,11 @@ export const searchSlice = createSlice({
 export const { setQuery, load, success, error } = searchSlice.actions;
 
 export const request = query => async dispatch => {
-  console.log('request')
   dispatch(load())
   try {
-    console.log('search')
     const results = await GithubApi.search(query)
-    console.log('results', results)
     return dispatch(success(results))
   } catch (e) {
-    console.log('error', error)
     dispatch(error(e.message))
   }
 };
