@@ -1,22 +1,21 @@
-import GitHub from 'github-api';
+class GithubApi {
+  getHeaders () {
+    const headers = new Headers()
+    headers.append('Authorization', `token ${process.env.REACT_APP_GITHUB_PERSONAL_TOKEN}`)
+    return headers
+  }
 
-const GithubApi = {
-  getClient: () => {
-    return new GitHub({
-      username: process.env.REACT_APP_GITHUB_USER,
-      password: process.env.REACT_APP_GITHUB_PASS
-    })
-  },
-  search: async (query) => {
+  async search (query) {
     try {
-      const github = this.getClient();
-      const search = github.search({ q: query });
-      const { data: results } = await search.forRepositories();
+      const url = `https://api.github.com/search/repositories?q=${query}&sort=stars&order=desc`
+      const headers = this.getHeaders()
+      const res = await fetch(url, { headers })
+      const { items: results } = await res.json()
       return results;
     } catch (e) {
       throw e
     }
   }
-};
+}
 
-export default GithubApi;
+export default new GithubApi();
